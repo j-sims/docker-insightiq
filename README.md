@@ -25,7 +25,7 @@ This provides a script and config files for installing Isilon InsightIQ in a doc
 - Ensure docker is operational
 	docker -v
 	docker ps -a
-- (optional) Download latest IIQ .sh file and replace existing in /files/
+- (Required) Download latest IIQ .sh file and place existing in /files/
 	Update answerfile if needed
 - Edit the script and update the variables as needed
 	(Required) Change the local datastore mount path - DATASTORE='/path/to/where/you/want/the/datastore/stored'
