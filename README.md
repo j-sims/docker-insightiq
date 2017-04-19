@@ -3,41 +3,52 @@ This provides a script and config files for installing Isilon InsightIQ in a doc
 
 
 ### Instructions
-- Install docker 1.6.2 or later
+1. Install docker 1.6.2 or later
 	https://docs.docker.com/installation/
-- Ensure docker is operational
+2. Ensure docker is operational
+	```
 	docker -v
 	docker ps -a
-- (Required) Download latest IIQ .sh file and place existing in /files/
-	Update answerfile if needed
-- Edit the script and update the variables as needed
-	(Required) Change the local datastore mount path - DATASTORE='/path/to/where/you/want/the/datastore/stored'
-	vi ./docker_iiq.sh
-	(Optional) Change the image and container name as desired
-- Build the image
-	 ./docker_iiq.sh build
-- Run the Container
-	./docker_iiq.sh start
-- Check the logs
-	./docker_iiq.sh logs
-	CTRLC+C to quit
-	Wait for Success starting message to appear
-- Connect to the IIQ Instance
-	https://$HOST:$HTTPSPORT
-	HOST = The docker Host IP
-	HTTPSPORT = Check docker_iiq.sh for this variable setting (Default:18443)
-	Default User: Administrator
-	Default Pass: a
-- Stop and remove the container (including everything but the datastore)
-	./docker_iiq.sh stop
-- Remove the image that was built
-	./docker_iiq.sh clean
-- Change the password
-	./docker_iiq.sh changepass
+	```
+3. (Required) Download latest IIQ .sh file from support.emc.com and place in /files/
+   1. Update /files/answerfile if needed
+4. Edit the script and update the variables as needed
+   1. (Required) Change the local datastore mount path - DATASTORE='/path/to/where/you/want/the/datastore/stored'
+   2. Edit ./docker_iiq.sh and change as needed
+   3. (Optional) Change the image and container name as desired
+   
+5. Build the image
+   1. ./docker_iiq.sh build
+
+6. Run the Container
+   1. ./docker_iiq.sh start
+   
+7. Check the logs
+   1. ./docker_iiq.sh logs
+   2. CTRLC+C to quit
+   3. Wait for Success starting message to appear
+
+8. Connect to the IIQ Instance
+   * https://$HOST:$HTTPSPORT
+   * HOST = The docker Host IP
+   * HTTPSPORT = Check docker_iiq.sh for this variable setting (Default:18443)
+   * Default User: Administrator
+   * Default Passqord: a
+ 
+ (optional info)
+ 
+1. Stop and remove the container (including everything but the datastore)
+   * ./docker_iiq.sh stop
+
+2. Remove the image that was built
+   * ./docker_iiq.sh clean
+3. Change the password
+   * ./docker_iiq.sh changepass
 
 ### Known Issues
-- FSA does not function at this time
-- Logs show broken pipe error
+   * FSA does not function at this time
+   * Logs show broken pipe error
+   ```
 	----------------------------------------
 	Exception happened during processing of request from ('::ffff:192.168.0.153', 59558, 0, 0)
 	Traceback (most recent call last):
@@ -52,3 +63,4 @@ This provides a script and config files for installing Isilon InsightIQ in a doc
 	  File "/usr/lib64/python2.6/socket.py", line 303, in flush
 	    self._sock.sendall(buffer(data, write_offset, buffer_size))
 	SysCallError: (32, 'Broken pipe')
+   ```
