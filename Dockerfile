@@ -1,6 +1,6 @@
 FROM centos:6.9
 
-MAINTAINER Claudio Fahey <claudio.fahey@dell.com>
+MAINTAINER Jim Sims <jim.sims@dell.com>
 
 LABEL Description="Docker container to run Isilon InsightIQ"
 
