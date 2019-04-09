@@ -13,7 +13,7 @@ case $1 in
 	docker rm $NAME
 	;;
 	"start")
-	docker run -d -v $DATASTORE:/datastore -p $HTTPSPORT:443 --name=$NAME $IMAGE
+	docker run -d -v $DATASTORE:/datastore -p $HTTPSPORT:443 -e WITH_IPV6_DISABLED=TRUE --name=$NAME $IMAGE
 	;;
 	"logs")
 	docker logs --follow $IMAGE

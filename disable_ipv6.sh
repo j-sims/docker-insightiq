@@ -1,0 +1,2 @@
+cat /etc/isilon/uwsgi.ini | sed 's/\[\:\:\]/0.0.0.0/g' > /tmp/uwsgi.ini && cp /etc/isilon/uwsgi.ini /etc/isilon/uwsgi.ini.orig && rm -f /etc/isilon/uwsgi.ini && cp /tmp/uwsgi.ini /etc/isilon/uwsgi.ini
+cat /etc/isilon/insightiq.ini | sed 's/\:\:/0.0.0.0/g' > /tmp/insightiq.ini && cp /etc/isilon/insightiq.ini /etc/isilon/insightiq.ini.orig && rm -f /etc/isilon/insightiq.ini && cp /tmp/insightiq.ini /etc/isilon/insightiq.ini
