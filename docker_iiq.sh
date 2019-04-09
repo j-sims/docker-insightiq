@@ -1,11 +1,8 @@
 #!/bin/bash
 IMAGE="insightiq"
 NAME=$IMAGE
-DATASTORE="/local/path/to/datastore"
-HTTPPORT=18080
+DATASTORE="${HOME}/insightiq-datastore"
 HTTPSPORT=18443
-
-
 
 case $1 in
 	"build")
@@ -16,7 +13,10 @@ case $1 in
 	docker rm $NAME
 	;;
 	"start")
-	docker run -d -v $DATASTORE:/datastore -p $HTTPPORT:80 -p $HTTPSPORT:443 --name=$NAME $IMAGE
+	docker run -d -v $DATASTORE:/datastore -p $HTTPSPORT:443 --name=$NAME $IMAGE
+	;;
+	"logs")
+	docker logs --follow $IMAGE
 	;;
 	"clean")
 	docker rmi $IMAGE
@@ -29,10 +29,8 @@ case $1 in
 	docker images | grep $IMAGE
 	;;
 	"changepass")
-	docker exec -ti $NAME /usr/bin/passwd administrator --stdin
+	docker exec -ti $NAME /usr/bin/passwd administrator
 	;;
 	*)
-	echo "$0 [status|build|start|stop|clean|changepass]"
+	echo "$0 [status|build|start|stop|clean|changepass|logs]"
 esac
-
-
