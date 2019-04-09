@@ -77,3 +77,5 @@ Use at your own risk.
         self._sock.sendall(buffer(data, write_offset, buffer_size))
     SysCallError: (32, 'Broken pipe')
    ```
+### Acknowledgements
+Thanks to Claudio Fahey for contributing the 4.1.2 update
