@@ -4,7 +4,8 @@ MAINTAINER Jim Sims <jim.sims@dell.com>
 
 LABEL Description="Docker container to run Isilon InsightIQ"
 
-RUN yum update -y && yum install -y sudo openssl-devel && yum clean all
+# The shell installer for IIQ struggles with deps so we preinstall them
+RUN yum update -y && yum install -y sudo blas blas-devel gcc-c++ lapack lapack-devel libgfortran libstdc++ nfs-utils openssl-devel postgresql93 postgresql93-devel postgresql93-libs postgresql93-server python python-devel readline sqlite sssd wkhtmltox zlib tar libXext fontconfig logrotate libX11 libXrender fipscheck-lib libedit && yum clean all
 
 # Copy in the installer files.
 # You can drop the latest IIQ .sh file here and it will get installed.
