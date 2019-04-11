@@ -29,5 +29,6 @@ EXPOSE 443 80
 # Adds the startup script and specifies run command
 # Docker doesn't use init service, init.d scripts are not run
 ADD run.sh /
+ADD tunedb.sh /
 ADD disable_ipv6.sh /
 CMD ["/run.sh"]
