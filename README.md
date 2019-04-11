@@ -19,34 +19,39 @@ Use at your own risk.
     docker -v
     docker ps -a
     ```
-
-3. Download Isilon InsightIQ 4.1.2 Installation File for Linux Computers from support.emc.com place it in /files/.
+3. Clone this repository
+    `https://github.com/j-sims/docker-insightiq.git`
+    
+4. Checkout Branch to match version of InsightIQ
+    `git checkout 4.X.X.X` or leave as-is for latest version
+    
+5. Download Isilon InsightIQ (install-insightiq-4.X.X.X.sh) Installation File for Linux Computers from support.emc.com place it in /files/.
    1. Note: Other versions may require updates to /files/answerfile.
 
-4. (Optional) Edit the docker_iiq.sh script and update the variables as needed.
+6. (Optional) Edit the docker_iiq.sh script and update the variables as needed.
    1. Change the local datastore mount path - DATASTORE='/path/to/where/you/want/the/datastore/stored'
    2. Change the image and container name as desired
    
-5. Build the image
+7. Build the image
    1. `./docker_iiq.sh build`
 
-6. Run the Container
+8. Run the Container
    1. `./docker_iiq.sh start`
 
-7. Set the password
+9. Set the password
    1. `./docker_iiq.sh changepass`
    
-8. Check the logs
+10. Check the logs
    1. `./docker_iiq.sh logs`
    2. CTRL+C to quit
 
-9. Connect to the IIQ Instance
+11. Connect to the IIQ Instance
    * https://$HOST:$HTTPSPORT
    * HOST = The docker Host IP
    * HTTPSPORT = Check docker_iiq.sh for this variable setting (Default:18443)
    * Default User: Administrator
 
-10. When prompted to choose the Datastore, select Local Datastore with path `/datastore`.
+12. When prompted to choose the Datastore, select Local Datastore with path `/datastore`.
 
 ### Optional Commands
  
