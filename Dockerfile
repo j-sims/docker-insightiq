@@ -4,8 +4,7 @@ MAINTAINER Jim Sims <jim.sims@dell.com>
 
 LABEL Description="Docker container to run Isilon InsightIQ"
 
-RUN yum install -y \
-        sudo
+RUN yum update -y && yum install -y sudo openssl-devel && yum clean all
 
 # Copy in the installer files.
 # You can drop the latest IIQ .sh file here and it will get installed.
